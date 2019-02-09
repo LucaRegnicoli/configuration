@@ -3,3 +3,12 @@
 ################################################################################
 
 /.vs
+/Config.Json/test/obj
+/Config.Json/src/obj
+/Config.Ini/test/obj
+/Config.Ini/src/obj
+/Config/src/.vs/Configuration/v15
+/Config/src/obj
+/Config/test/obj
+/Config.Abstractions/src/obj
+/test/obj
