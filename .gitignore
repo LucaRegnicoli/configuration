@@ -12,3 +12,11 @@
 /Config/test/obj
 /Config.Abstractions/src/obj
 /test/obj
+/Config/src/bin/Debug/netcoreapp2.1
+/Config/test/bin/Debug/netcoreapp2.1
+/Config.Abstractions/src/bin/Debug/netcoreapp2.1
+/Config.Ini/src/bin/Debug/netcoreapp2.1
+/Config.Ini/test/bin/Debug/netcoreapp2.1
+/Config.Json/src/bin/Debug/netcoreapp2.1
+/Config.Json/test/bin/Debug/netcoreapp2.1
+/test/bin/Debug/netcoreapp2.1
