@@ -1,10 +1,14 @@
+using Infrastructure.Configuration.Ini;
 using System.Collections.Generic;
+using System.IO;
 using Xunit;
 
 namespace Infrastructure.Configuration.FunctionalTests
 {
     public class ConfigurationTest
     {
+        private readonly string IniFile;
+
         private static readonly Dictionary<string, string> MemoryConfigContent = new Dictionary<string, string>
             {
                 { "MemKey1", "MemValue1" },
@@ -15,21 +19,41 @@ namespace Infrastructure.Configuration.FunctionalTests
                 { "CommonKey1:CommonKey2:CommonKey3:CommonKey4", "MemValue6" }
             };
 
+        private static readonly string IniConfigFileContent =
+            @"IniKey1=IniValue1
+            [IniKey2]
+            # Comments
+            IniKey3=IniValue2
+            ; Comments
+            IniKey4=IniValue3
+            IniKey5:IniKey6=IniValue4
+            /Comments
+            [CommonKey1:CommonKey2]
+            IniKey7=IniValue5
+            CommonKey3:CommonKey4=IniValue6";
+
+        public ConfigurationTest()
+        {
+            IniFile = Path.GetRandomFileName();
+        }
+
 
         [Fact]
         public void LoadAndCombineKeyValuePairsFromDifferentConfigurationProviders()
         {
+            WriteTestFiles();
+
             // Arrange and Act 
             var config = new ConfigurationBuilder()
-                //.AddIniFile(_iniFile)
+                .AddIniFile(IniFile)
                 .AddInMemoryCollection(MemoryConfigContent)
                 .Build();
 
-            //Assert.Equal("IniValue1", config["IniKey1"]);
-            //Assert.Equal("IniValue2", config["IniKey2:IniKey3"]);
-            //Assert.Equal("IniValue3", config["IniKey2:IniKey4"]);
-            //Assert.Equal("IniValue4", config["IniKey2:IniKey5:IniKey6"]);
-            //Assert.Equal("IniValue5", config["CommonKey1:CommonKey2:IniKey7"]);
+            Assert.Equal("IniValue1", config["IniKey1"]);
+            Assert.Equal("IniValue2", config["IniKey2:IniKey3"]);
+            Assert.Equal("IniValue3", config["IniKey2:IniKey4"]);
+            Assert.Equal("IniValue4", config["IniKey2:IniKey5:IniKey6"]);
+            Assert.Equal("IniValue5", config["CommonKey1:CommonKey2:IniKey7"]);
 
             // Assert
             Assert.Equal("MemValue1", config["MemKey1"]);
@@ -38,6 +62,11 @@ namespace Infrastructure.Configuration.FunctionalTests
             Assert.Equal("MemValue4", config["MemKey2:MemKey5:MemKey6"]);
             Assert.Equal("MemValue5", config["CommonKey1:CommonKey2:MemKey7"]);
             Assert.Equal("MemValue6", config["CommonKey1:CommonKey2:CommonKey3:CommonKey4"]);
+        }
+
+        private void WriteTestFiles()
+        {
+            File.WriteAllText(IniFile, IniConfigFileContent);
         }
     }
 }

@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Config.Ini\src\Infrastructure.Configuration.Ini.csproj" />
     <ProjectReference Include="..\Config\src\Infrastructure.Configuration.csproj" />
   </ItemGroup>
 
