@@ -7,7 +7,8 @@ namespace Infrastructure.Configuration.FunctionalTests
 {
     public class ConfigurationTest
     {
-        private readonly string IniFile;
+        private readonly string IniDefaultFile;
+        private readonly string IniOverridenFile;
 
         private static readonly Dictionary<string, string> MemoryConfigContent = new Dictionary<string, string>
             {
@@ -19,7 +20,7 @@ namespace Infrastructure.Configuration.FunctionalTests
                 { "CommonKey1:CommonKey2:CommonKey3:CommonKey4", "MemValue6" }
             };
 
-        private static readonly string IniConfigFileContent =
+        private static readonly string IniDefaultConfigFileContent =
             @"IniKey1=IniValue1
             [IniKey2]
             # Comments
@@ -32,9 +33,15 @@ namespace Infrastructure.Configuration.FunctionalTests
             IniKey7=IniValue5
             CommonKey3:CommonKey4=IniValue6";
 
+        private static readonly string IniOverrideConfigFileContent =
+            @"[IniKey2]
+            IniKey3=IniValueOverriden";
+
+
         public ConfigurationTest()
         {
-            IniFile = Path.GetRandomFileName();
+            IniDefaultFile = Path.GetRandomFileName();
+            IniOverridenFile = Path.GetRandomFileName();
         }
 
 
@@ -45,10 +52,11 @@ namespace Infrastructure.Configuration.FunctionalTests
 
             // Arrange and Act 
             var config = new ConfigurationBuilder()
-                .AddIniFile(IniFile)
+                .AddIniFile(IniDefaultFile)
                 .AddInMemoryCollection(MemoryConfigContent)
                 .Build();
 
+            // Assert
             Assert.Equal("IniValue1", config["IniKey1"]);
             Assert.Equal("IniValue2", config["IniKey2:IniKey3"]);
             Assert.Equal("IniValue3", config["IniKey2:IniKey4"]);
@@ -64,9 +72,26 @@ namespace Infrastructure.Configuration.FunctionalTests
             Assert.Equal("MemValue6", config["CommonKey1:CommonKey2:CommonKey3:CommonKey4"]);
         }
 
+        [Fact]
+        public void LoadAndOverrideKeyValuePairsFromDifferentConfigurationProviders()
+        {
+            WriteTestFiles();
+
+            // Arrange and Act 
+            var config = new ConfigurationBuilder()
+                .AddIniFile(IniDefaultFile)
+                .AddIniFile(IniOverridenFile)
+                .Build();
+
+            // Assert
+            Assert.Equal("IniValueOverriden", config["IniKey2:IniKey3"]);
+        }
+
+
         private void WriteTestFiles()
         {
-            File.WriteAllText(IniFile, IniConfigFileContent);
+            File.WriteAllText(IniDefaultFile, IniDefaultConfigFileContent);
+            File.WriteAllText(IniOverridenFile, IniOverrideConfigFileContent);
         }
     }
 }
