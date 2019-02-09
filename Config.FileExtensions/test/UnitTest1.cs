@@ -1,7 +1,7 @@
 using System;
 using Xunit;
 
-namespace Infrastructure.Configuration.Ini.Tests
+namespace Infrastructure.Configuration.FileExtensions.Tests
 {
     public class UnitTest1
     {

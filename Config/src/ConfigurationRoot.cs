@@ -19,6 +19,11 @@ namespace Infrastructure.Configuration
         public ConfigurationRoot(IList<IConfigurationProvider> providers)
         {
             _providers = providers ?? throw new ArgumentNullException(nameof(providers));
+
+            foreach (var p in providers)
+            {
+                p.Load();
+            }
         }
 
         /// <summary>

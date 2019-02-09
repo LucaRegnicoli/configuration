@@ -20,3 +20,7 @@
 /Config.Json/src/bin/Debug/netcoreapp2.1
 /Config.Json/test/bin/Debug/netcoreapp2.1
 /test/bin/Debug/netcoreapp2.1
+/Config.FileExtensions/src/obj
+/Config.FileExtensions/test/obj
+/Config.FileExtensions/src/bin/Debug/netcoreapp2.1
+/Config.FileExtensions/test/bin/Debug/netcoreapp2.1
