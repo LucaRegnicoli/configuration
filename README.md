@@ -1,5 +1,12 @@
-# configuration
-.NET APIs for configuration utilities.
+# Configuration
+
+The proposed configuration solution is based on key-value pairs established by configuration providers. 
+Configuration providers read configuration data into key-value pairs from a variety of configuration sources:
+
+* In-memory .NET objects
+* INI file
+* JSON file (not implemented in this version)
+
 
 ```
 
