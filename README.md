@@ -139,16 +139,16 @@ Parsing logic (see IniConfigurationProvider.Load for further details):
 * Remove quotes
 * Raise exception if the key is duplicated (but could be duplicated in other provider source)
 
-##### Infrastructure.Configuration.Ini.Tests
+#### Infrastructure.Configuration.Ini.Tests
 
 It provides tests against ini-based configuration
 
-##### Infrastructure.Configuration.Json
+#### Infrastructure.Configuration.Json
 
 This provider has not been implemented.
 It will provide the functionality to serialise and deserialise the key/value structures from a json file
 
-##### Infrastructure.Configuration.Json.Tests
+#### Infrastructure.Configuration.Json.Tests
 
 This test provider has not been implemented.
 It will test the functionality to serialise and deserialise the key/value structures from a json file
