@@ -15,9 +15,6 @@ Configuration sources are read in the order that their configuration providers a
 var config = new ConfigurationBuilder()
     .AddInMemoryCollection(arrayDictionary);
     .AddIniFile("data.ini", optional: false);
-    .AddJsonFile("data.json", optional: true);
-    .AddJsonFile("advanced_data.json", optional: true;
-    .AddXmlFile("data.xml", optional: false); 
     .Build();
 
 // Read the value
@@ -25,5 +22,30 @@ var value = config["CommonKey1:CommonKey2:CommonKey3:CommonKey4"];
 
 ```
 
-See the Infrastructure.Configuration.FunctionalTests for a complete example.
+####  Projects description
+
+## Infrastructure.Configuration.FunctionalTests
+
+## Infrastructure.Configuration
+
+## Infrastructure.Configuration.Tests
+
+## Infrastructure.Configuration.Abstractions
+
+## Infrastructure.Configuration.FileExtensions
+
+## Infrastructure.Configuration.FunctionalTests
+
+## Infrastructure.Configuration.Ini
+
+## Infrastructure.Configuration.Ini.Tests
+
+## Infrastructure.Configuration.Json
+
+## Infrastructure.Configuration.Json.Tests
+
+
+
+
+
 
