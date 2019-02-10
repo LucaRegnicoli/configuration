@@ -1,4 +1,4 @@
-# Introduction
+## Introduction
 
 The proposed configuration solution is based on key-value pairs established by configuration providers. 
 
@@ -32,7 +32,7 @@ Please see Infrastructure.Configuration.FunctionalTests project for a complete t
 
 Note: The code coverage and the number of implemented tests is not high enough to be considered a production-ready api.
 
-# Data 
+## Data 
 
 A generic example of a INI file:
 
@@ -103,14 +103,11 @@ Please see Infrastructure.Configuration.FunctionalTests project for a complete t
 
 This approach is used in the Docker compose configuration (see https://docs.docker.com/compose/extends/) 
 
-#  Projects description
+##  Projects description
 
 #### Infrastructure.Configuration.FunctionalTests
 
 It provides tests of the overall configuration solution: loading from different sources (in-memory and ini) and override (in-memory and ini).
-
-![Test result](https://github.com/LucaRegnicoli/configuration/blob/master/Test-Explore.png)
-
 
 #### Infrastructure.Configuration
 
@@ -154,8 +151,11 @@ It will provide the functionality to serialise and deserialise the key/value str
 This test provider has not been implemented.
 It will test the functionality to serialise and deserialise the key/value structures from a json file
 
+## Test result
 
+The implemented tests complete successfully.
 
+![Test result](https://github.com/LucaRegnicoli/configuration/blob/master/Test-Explore.png)
 
 
 
