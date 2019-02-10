@@ -1,5 +1,4 @@
-﻿using System;
-using Infrastructure.Configuration.Abstractions;
+﻿using Infrastructure.Configuration.Abstractions;
 using Infrastructure.Configuration.FileExtensions;
 
 namespace Infrastructure.Configuration.Ini
