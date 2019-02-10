@@ -109,6 +109,9 @@ This approach is used in the Docker compose configuration (see https://docs.dock
 
 It provides tests of the overall configuration solution: loading from different sources (in-memory and ini) and override (in-memory and ini).
 
+![Test result](https://github.com/LucaRegnicoli/configuration/blob/master/Test-Explore.png)
+
+
 #### Infrastructure.Configuration
 
 It contains common classes like ConfigurationBuilder
@@ -150,6 +153,7 @@ It will provide the functionality to serialise and deserialise the key/value str
 
 This test provider has not been implemented.
 It will test the functionality to serialise and deserialise the key/value structures from a json file
+
 
 
 
