@@ -1,6 +1,7 @@
 # Introduction
 
 The proposed configuration solution is based on key-value pairs established by configuration providers. 
+
 Configuration providers read configuration data into key-value pairs from a variety of configuration sources:
 
 * In-memory .NET objects
@@ -9,6 +10,11 @@ Configuration providers read configuration data into key-value pairs from a vari
 * XML file (not implemented in this version)
 
 Configuration sources are read in the order that their configuration providers are specified.
+
+The design allows a flexible extensibility of the model to support diffent scenarios and use cases:
+One service could need just the in memory option, while another service might need the json AND xml options; the choice of which providers use (and in which order) is left to the API user.
+
+The main design choice is the API **combines** the provided sources in one single key-value pairs object; for example:
 
 ```
 // Create a new instance of the ConfigurationBuilder  
@@ -22,7 +28,8 @@ var value = config["Section:Key"];
 
 ```
 
-Please see Infrastructure.Configuration.FunctionalTests project for a complete test scenario.
+Please see Infrastructure.Configuration.FunctionalTests project for a complete test scenario of the in-memory and ini providers.
+
 
 # Data 
 
