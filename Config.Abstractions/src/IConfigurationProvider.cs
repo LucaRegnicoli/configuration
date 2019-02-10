@@ -10,16 +10,11 @@ namespace Infrastructure.Configuration.Abstractions
         /// <summary>
         /// Tries to get a configuration value for the specified key.
         /// </summary>
-        /// <param name="key">The key.</param>
-        /// <param name="value">The value.</param>
-        /// <returns><c>True</c> if a value for the specified key was found, otherwise <c>false</c>.</returns>
         bool TryGet(string key, out string value);
 
         /// <summary>
         /// Sets a configuration value for the specified key.
         /// </summary>
-        /// <param name="key">The key.</param>
-        /// <param name="value">The value.</param>
         void Set(string key, string value);
 
         /// <summary>
@@ -32,9 +27,6 @@ namespace Infrastructure.Configuration.Abstractions
         /// <see cref="IConfigurationProvider"/>'s data and the set of keys returned by all the preceding
         /// <see cref="IConfigurationProvider"/>s.
         /// </summary>
-        /// <param name="earlierKeys">The child keys returned by the preceding providers for the same parent path.</param>
-        /// <param name="parentPath">The parent path.</param>
-        /// <returns>The child keys.</returns>
         IEnumerable<string> GetChildKeys(IEnumerable<string> earlierKeys, string parentPath);
     }
 }

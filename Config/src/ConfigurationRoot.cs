@@ -15,7 +15,6 @@ namespace Infrastructure.Configuration
         /// <summary>
         /// Initializes a Configuration root with a list of providers.
         /// </summary>
-        /// <param name="providers">The <see cref="IConfigurationProvider"/>s for this configuration.</param>
         public ConfigurationRoot(IList<IConfigurationProvider> providers)
         {
             _providers = providers ?? throw new ArgumentNullException(nameof(providers));
@@ -34,12 +33,11 @@ namespace Infrastructure.Configuration
         /// <summary>
         /// Gets or sets the value corresponding to a configuration key.
         /// </summary>
-        /// <param name="key">The configuration key.</param>
-        /// <returns>The configuration value.</returns>
         public string this[string key]
         {
             get
             {
+                // Reverse the provider list to support the overrides
                 foreach (var provider in _providers.Reverse())
                 {
                     if (provider.TryGet(key, out var value))
@@ -67,14 +65,11 @@ namespace Infrastructure.Configuration
         /// <summary>
         /// Gets the immediate children sub-sections.
         /// </summary>
-        /// <returns></returns>
         public IEnumerable<IConfigurationSection> GetChildren() => this.GetChildrenImplementation(null);
 
         /// <summary>
         /// Gets a configuration sub-section with the specified key.
         /// </summary>
-        /// <param name="key">The key of the configuration section.</param>
-        /// <returns>The <see cref="IConfigurationSection"/>.</returns>
         /// <remarks>
         ///     This method will never return <c>null</c>. If no matching sub-section is found with the specified key,
         ///     an empty <see cref="IConfigurationSection"/> will be returned.
@@ -84,7 +79,7 @@ namespace Infrastructure.Configuration
         /// <inheritdoc />
         public void Dispose()
         {
-            // dispose providers
+            // Dispose the providers
             foreach (var provider in _providers)
             {
                 (provider as IDisposable)?.Dispose();

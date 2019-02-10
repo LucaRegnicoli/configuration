@@ -13,9 +13,6 @@ namespace Infrastructure.Configuration
         /// <summary>
         /// Gets the immediate children sub-sections of configuration root based on key.
         /// </summary>
-        /// <param name="root">Configuration from which to retrieve sub-sections.</param>
-        /// <param name="path">Key of a section of which children to retrieve.</param>
-        /// <returns>Immediate children sub-sections of section specified by key.</returns>
         internal static IEnumerable<IConfigurationSection> GetChildrenImplementation(this IConfigurationRoot root, string path)
         {
             return root.Providers

@@ -16,22 +16,10 @@ namespace Infrastructure.Configuration
         /// <summary>
         /// Initializes a new instance.
         /// </summary>
-        /// <param name="root">The configuration root.</param>
-        /// <param name="path">The path to this section.</param>
         public ConfigurationSection(IConfigurationRoot root, string path)
         {
-            if (root == null)
-            {
-                throw new ArgumentNullException(nameof(root));
-            }
-
-            if (path == null)
-            {
-                throw new ArgumentNullException(nameof(path));
-            }
-
-            _root = root;
-            _path = path;
+            _root = root ?? throw new ArgumentNullException(nameof(root));
+            _path = path ?? throw new ArgumentNullException(nameof(path));
         }
 
         /// <summary>
@@ -48,7 +36,6 @@ namespace Infrastructure.Configuration
             {
                 if (_key == null)
                 {
-                    // Key is calculated lazily as last portion of Path
                     _key = ConfigurationPath.GetSectionKey(_path);
                 }
                 return _key;
@@ -73,8 +60,6 @@ namespace Infrastructure.Configuration
         /// <summary>
         /// Gets or sets the value corresponding to a configuration key.
         /// </summary>
-        /// <param name="key">The configuration key.</param>
-        /// <returns>The configuration value.</returns>
         public string this[string key]
         {
             get
@@ -91,8 +76,6 @@ namespace Infrastructure.Configuration
         /// <summary>
         /// Gets a configuration sub-section with the specified key.
         /// </summary>
-        /// <param name="key">The key of the configuration section.</param>
-        /// <returns>The <see cref="IConfigurationSection"/>.</returns>
         /// <remarks>
         ///     This method will never return <c>null</c>. If no matching sub-section is found with the specified key,
         ///     an empty <see cref="IConfigurationSection"/> will be returned.
@@ -102,7 +85,6 @@ namespace Infrastructure.Configuration
         /// <summary>
         /// Gets the immediate descendant configuration sub-sections.
         /// </summary>
-        /// <returns>The configuration sub-sections.</returns>
         public IEnumerable<IConfigurationSection> GetChildren() => _root.GetChildrenImplementation(Path);
     }
 }

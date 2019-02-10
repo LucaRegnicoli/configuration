@@ -7,13 +7,11 @@ namespace Infrastructure.Configuration
     /// <summary>
     /// IConfigurationBuilder extension methods for the MemoryConfigurationProvider.
     /// </summary>
-    public static class MemoryConfigurationBuilderExtensions
+    public static class MemoryConfigurationExtensions
     {
         /// <summary>
         /// Adds the memory configuration provider to <paramref name="configurationBuilder"/>.
         /// </summary>
-        /// <param name="configurationBuilder">The <see cref="IConfigurationBuilder"/> to add to.</param>
-        /// <returns>The <see cref="IConfigurationBuilder"/>.</returns>
         public static IConfigurationBuilder AddInMemoryCollection(this IConfigurationBuilder configurationBuilder)
         {
             if (configurationBuilder == null)
@@ -28,12 +26,7 @@ namespace Infrastructure.Configuration
         /// <summary>
         /// Adds the memory configuration provider to <paramref name="configurationBuilder"/>.
         /// </summary>
-        /// <param name="configurationBuilder">The <see cref="IConfigurationBuilder"/> to add to.</param>
-        /// <param name="initialData">The data to add to memory configuration provider.</param>
-        /// <returns>The <see cref="IConfigurationBuilder"/>.</returns>
-        public static IConfigurationBuilder AddInMemoryCollection(
-            this IConfigurationBuilder configurationBuilder,
-            IEnumerable<KeyValuePair<string, string>> initialData)
+        public static IConfigurationBuilder AddInMemoryCollection(this IConfigurationBuilder configurationBuilder, IEnumerable<KeyValuePair<string, string>> initialData)
         {
             if (configurationBuilder == null)
             {

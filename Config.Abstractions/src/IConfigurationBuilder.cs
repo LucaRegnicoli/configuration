@@ -22,15 +22,12 @@ namespace Infrastructure.Configuration.Abstractions
         /// <summary>
         /// Adds a new configuration source.
         /// </summary>
-        /// <param name="source">The configuration source to add.</param>
-        /// <returns>The same <see cref="IConfigurationBuilder"/>.</returns>
         IConfigurationBuilder Add(IConfigurationSource source);
 
         /// <summary>
         /// Builds an <see cref="IConfiguration"/> with keys and values from the set of sources registered in
         /// <see cref="Sources"/>.
         /// </summary>
-        /// <returns>An <see cref="IConfigurationRoot"/> with keys and values from the registered sources.</returns>
         IConfigurationRoot Build();
     }
 }

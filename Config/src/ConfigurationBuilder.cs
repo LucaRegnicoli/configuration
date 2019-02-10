@@ -23,8 +23,6 @@ namespace Infrastructure.Configuration
         /// <summary>
         /// Adds a new configuration source.
         /// </summary>
-        /// <param name="source">The configuration source to add.</param>
-        /// <returns>The same <see cref="IConfigurationBuilder"/>.</returns>
         public IConfigurationBuilder Add(IConfigurationSource source)
         {
             if (source == null)
@@ -40,7 +38,6 @@ namespace Infrastructure.Configuration
         /// Builds an <see cref="IConfiguration"/> with keys and values from the set of providers registered in
         /// <see cref="Sources"/>.
         /// </summary>
-        /// <returns>An <see cref="IConfigurationRoot"/> with keys and values from the registered providers.</returns>
         public IConfigurationRoot Build()
         {
             var providers = new List<IConfigurationProvider>();
