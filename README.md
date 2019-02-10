@@ -33,30 +33,6 @@ Please see Infrastructure.Configuration.FunctionalTests project for a complete t
 
 # Data 
 
-In order to support JSON and XML configuration pattern, the API is capable of maintaining hierarchical configuration data by flattening the hierarchical data with the use of a delimiter in the configuration keys.
-
-A generic example of JSON file:
-
-```
-{
-  "section0": {
-    "key0": "value",
-    "key1": "value"
-  },
-  "section1": {
-    "key0": "value",
-    "key1": "value"
-  }
-}
-```
-
-The sections and keys are flattened with the use of a colon (:) to maintain the original structure:
-
-* section0:key0
-* section0:key1
-* section1:key0
-* section1:key1
-
 A generic example of a INI file:
 
 ```
@@ -82,6 +58,32 @@ The previous configuration file loads the following keys with value:
 * section1:subsection:key
 * section2:subsection0:key
 * section2:subsection1:key
+
+In order to support JSON and XML configuration pattern, the API is capable of maintaining hierarchical configuration data by flattening the hierarchical data with the use of a delimiter in the configuration keys.
+
+A generic example of JSON file:
+
+```
+{
+  "section0": {
+    "key0": "value",
+    "key1": "value"
+  },
+  "section1": {
+    "key0": "value",
+    "key1": "value"
+  }
+}
+```
+
+The sections and keys are flattened with the use of a colon (:) to maintain the original structure:
+
+* section0:key0
+* section0:key1
+* section1:key0
+* section1:key1
+
+
 
 #  Overrides
 
