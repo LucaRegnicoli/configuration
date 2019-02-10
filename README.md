@@ -12,7 +12,7 @@ Configuration providers read configuration data into key-value pairs from a vari
 Configuration sources are read in the order that their configuration providers are specified.
 
 The design allows a flexible extensibility of the model to support diffent scenarios and use cases:
-one service could need just the in-memory option, while another service might need the JSON and Xml options; the choice of which providers use (and in which order) is left to the API user.
+one service could need just the in-memory option, while another service might need the JSON and XML options; the choice of which providers use (and in which order) is left to the API user.
 
 The main design choice is the API **combines** the provided sources in one single key-value pairs object; for example:
 
@@ -28,7 +28,7 @@ var value = config["Section:Key"];
 
 ```
 
-Please see Infrastructure.Configuration.FunctionalTests project for a complete test scenario of the in-memory and ini providers.
+Please see Infrastructure.Configuration.FunctionalTests project for a complete test scenario of the in-memory and INI providers.
 
 The configuration values, in the proposed solution, support only string value, but it's possible to extend the api in order to provide a Binder class that could deserialise the value into native object like boolean, integer or double, or convert the value into classes or list.
 
@@ -87,7 +87,6 @@ The sections and keys are flattened with the use of a colon (:) to maintain the 
 * section1:key1
 
 
-
 #  Overrides
 
 In order to support override, the choice is to use an approach similar to the object-oriented practice: a base configuration source that provides the base dataset and a specific 'derived' configuration file that contains the only overriden keys.
@@ -101,7 +100,7 @@ var config = new ConfigurationBuilder()
     .Build();
 ```
 
-Please see Infrastructure.Configuration.FunctionalTests project for a complete test scenario of the override.
+Please see _Infrastructure.Configuration.FunctionalTests_ project for a complete test scenario of the override.
 
 This approach is used in the Docker compose configuration (see https://docs.docker.com/compose/extends/) 
 
@@ -109,29 +108,30 @@ This approach is used in the Docker compose configuration (see https://docs.dock
 
 #### Infrastructure.Configuration.FunctionalTests
 
-It provides tests of the overall configuration solution: loading from different sources (in-memory and ini) and override (in-memory and ini).
+It provides tests of the overall configuration solution: loading from different sources (In-memory and INI) and override (In-memory and INI).
 
 #### Infrastructure.Configuration
 
-It contains common classes like ConfigurationBuilder
+It contains common classes like _ConfigurationBuilder_
 
 #### Infrastructure.Configuration.Tests
 
-It provides tests against common classes like ConfigurationBuilder
+It provides tests to common classes like _ConfigurationBuilder_
 
 #### Infrastructure.Configuration.Abstractions
 
-It contains interfaces that are implemented in the Infrastructure.Configuration project and referenced in the other project
+It contains interfaces that are implemented in the Infrastructure.Configuration project and referenced in the other projects.
 
 #### Infrastructure.Configuration.FileExtensions
 
-It contains the base classes for file-based provider (ini, json, xml).
+It contains the base classes for file-based provider (INI, JSON, XML).
 
 #### Infrastructure.Configuration.Ini
 
 It contains the extensions, provider and source class for Ini-based configuration.
 
-Parsing logic (see IniConfigurationProvider.Load for further details):
+Parsing logic (see _IniConfigurationProvider.Load_ for further details):
+
 * Ignore blank lines
 * Ignore comments (; # /)
 * A section is enclosed in square bracket
@@ -141,17 +141,15 @@ Parsing logic (see IniConfigurationProvider.Load for further details):
 
 #### Infrastructure.Configuration.Ini.Tests
 
-It provides tests against ini-based configuration
+It provides tests to ini-based configuration.
 
 #### Infrastructure.Configuration.Json
 
-This provider has not been implemented.
-It will provide the functionality to serialise and deserialise the key/value structures from a json file
+This provider has not been implemented. It would provide the functionality to deserialise the key-value structures from a JSON file.
 
 #### Infrastructure.Configuration.Json.Tests
 
-This test provider has not been implemented.
-It will test the functionality to serialise and deserialise the key/value structures from a json file
+This test suite has not been implemented. It would test the functionality to deserialise the key-value structures from a JSON file.
 
 ## Test result
 
