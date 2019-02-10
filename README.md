@@ -22,21 +22,21 @@ var value = config["CommonKey1:CommonKey2:CommonKey3:CommonKey4"];
 
 ```
 
-####  Projects description
+#  Projects description
 
-## Infrastructure.Configuration.FunctionalTests
+#### Infrastructure.Configuration.FunctionalTests
 
-## Infrastructure.Configuration
+#### Infrastructure.Configuration
 
-## Infrastructure.Configuration.Tests
+#### Infrastructure.Configuration.Tests
 
-## Infrastructure.Configuration.Abstractions
+#### Infrastructure.Configuration.Abstractions
 
-## Infrastructure.Configuration.FileExtensions
+#### Infrastructure.Configuration.FileExtensions
 
-## Infrastructure.Configuration.FunctionalTests
+#### Infrastructure.Configuration.FunctionalTests
 
-## Infrastructure.Configuration.Ini
+#### Infrastructure.Configuration.Ini
 
 ## Infrastructure.Configuration.Ini.Tests
 
