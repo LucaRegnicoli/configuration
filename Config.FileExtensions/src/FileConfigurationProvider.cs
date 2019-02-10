@@ -27,7 +27,6 @@ namespace Infrastructure.Configuration.FileExtensions
         /// <summary>
         /// Generates a string representing this provider name and relevant details.
         /// </summary>
-        /// <returns> The configuration name. </returns>
         public override string ToString() => $"{GetType().Name} for '{Source.Path}' ({(Source.Optional ? "Optional" : "Required")})";
 
         /// <summary>
@@ -78,7 +77,6 @@ namespace Infrastructure.Configuration.FileExtensions
         /// <summary>
         /// Loads this provider's data from a stream.
         /// </summary>
-        /// <param name="stream">The stream to read.</param>
         public abstract void Load(Stream stream);
 
         private void HandleException(Exception e)

@@ -32,9 +32,8 @@ namespace Infrastructure.Configuration.FileExtensions
         public abstract IConfigurationProvider Build(IConfigurationBuilder builder);
 
         /// <summary>
-        /// Called to use any default settings on the builder like the FileProvider or FileLoadExceptionHandler.
+        /// Called to use any default settings on the builder
         /// </summary>
-        /// <param name="builder">The <see cref="IConfigurationBuilder"/>.</param>
         public void EnsureDefaults(IConfigurationBuilder builder)
         {
             OnLoadException = OnLoadException ?? builder.GetFileLoadExceptionHandler();
