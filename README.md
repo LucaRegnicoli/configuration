@@ -83,6 +83,22 @@ The previous configuration file loads the following keys with value:
 * section2:subsection0:key
 * section2:subsection1:key
 
+#  Overrides
+
+In order to support override, the choice is to use an approach similar to the object-oriented practice: a base configuration source that provides the base dataset and a specific 'derived' configuration file that contains the only overriden keys.
+
+The 'derived' configuration file is added after the default file for example:
+
+```
+var config = new ConfigurationBuilder()
+    .AddIniFile(IniDefaultFile)
+    .AddIniFile(IniOverridenFile)
+    .Build();
+```
+
+Please see Infrastructure.Configuration.FunctionalTests project for a complete test scenario of the override.
+
+This approach is used in the Docker compose configuration (see https://docs.docker.com/compose/extends/) 
 
 #  Projects description
 
@@ -100,11 +116,11 @@ The previous configuration file loads the following keys with value:
 
 #### Infrastructure.Configuration.Ini
 
-## Infrastructure.Configuration.Ini.Tests
+##### Infrastructure.Configuration.Ini.Tests
 
-## Infrastructure.Configuration.Json
+##### Infrastructure.Configuration.Json
 
-## Infrastructure.Configuration.Json.Tests
+##### Infrastructure.Configuration.Json.Tests
 
 
 
