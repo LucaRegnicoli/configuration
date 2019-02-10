@@ -6,7 +6,7 @@ namespace Infrastructure.Configuration.Ini.Tests
     public class ConfigurationExtensionsTest
     {
         [Fact]
-        public void AddIniFile_ThrowsIfFileDoesNotExistAtPath()
+        public void AddIniFile_WithRequiredPath_Should_Throws_When_FileDoesNotExist()
         {
             // Arrange
             var path = "file-does-not-exist.ini";
@@ -17,7 +17,7 @@ namespace Infrastructure.Configuration.Ini.Tests
         }
 
         [Fact]
-        public void AddIniFile_DoesNotThrowsIfFileDoesNotExistAtPathAndOptional()
+        public void AddIniFile_WithOptionalPath_Should_NotThrows_When_FileDoesNotExist()
         {
             // Arrange
             var path = "file-does-not-exist.ini";
