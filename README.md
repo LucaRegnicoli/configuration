@@ -30,6 +30,8 @@ var value = config["Section:Key"];
 
 Please see Infrastructure.Configuration.FunctionalTests project for a complete test scenario of the in-memory and ini providers.
 
+The configuration values, in the proposed solution, support only string value, but it's possible to extend the api in order to provide a Binder class that could deserialise the value into native object like boolean, integer or double, or convert the value into classes or list.
+
 Note: The code coverage and the number of implemented tests is not high enough to be considered a production-ready api.
 
 ## Data 
